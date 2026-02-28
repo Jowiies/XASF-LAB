@@ -25,70 +25,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            XASFLABTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
 
-                Column(
-                ) {
-                    UserInputScreen(placeholder = "email")
-                    UserInputScreen(placeholder = "ip address")
-                    AppButton(
-                        text = "Jose Ramón",
-                        onClick = {}
-                    )
-                }
-
-
-            }
         }
-    }
-
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Composable
-fun AppButton(onClick: () -> Unit, text: String){
-    Button(onClick = {onClick() }) {
-        Text(text=text)
-    }
-}
-
-@Composable
-fun UserInputScreen(placeholder: String) {
-    var userInput by remember { mutableStateOf("") }
-    Column {
-        OutlinedTextField(
-            value = userInput,
-            onValueChange = { newText ->
-                userInput = newText
-            },
-            placeholder = {Text(text = placeholder)}
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Column(
-    ) {
-        UserInputScreen(placeholder = "email")
-        UserInputScreen(placeholder = "ip address")
-        AppButton(
-            text = "Jose Ramón",
-            onClick = {}
-        )
     }
 }
