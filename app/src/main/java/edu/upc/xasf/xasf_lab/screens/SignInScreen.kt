@@ -14,15 +14,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
+import android.net.InetAddresses.isNumericAddress
 
 private fun isValidEmail(email: String): Boolean =
     Patterns.EMAIL_ADDRESS.matcher(email.trim()).matches()
 
-private fun isValidIP(ip: String): Boolean =
-    Patterns.IP_ADDRESS.matcher(ip.trim()).matches()
-
-
-
+private fun isValidIP(ip: String): Boolean = isNumericAddress(ip.trim());
 
 @Composable
 fun SignInScreen(onLoginClick: (String, String) -> Unit) {

@@ -8,8 +8,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
-import edu.upc.xasf.xasf_lab.screens.SignInScreen
 import edu.upc.xasf.xasf_lab.screens.HomeScreen
+import edu.upc.xasf.xasf_lab.screens.SignInScreen
 import kotlinx.serialization.Serializable
 
 @Serializable object SignInRoute
