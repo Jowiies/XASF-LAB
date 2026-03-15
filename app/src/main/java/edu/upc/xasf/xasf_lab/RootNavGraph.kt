@@ -10,12 +10,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
 import edu.upc.xasf.xasf_lab.screens.HomeScreen
 import edu.upc.xasf.xasf_lab.screens.SignInScreen
+import edu.upc.xasf.xasf_lab.screens.MunicipisScreen
 import kotlinx.serialization.Serializable
 
 @Serializable object SignInRoute
 
 @Serializable data class HomeRoute(val email: String, val ipAddress: String)
 
+@Serializable object MunicipisRoute
 @Composable
 fun RootNavGraph(navController: NavHostController, paddingValues: PaddingValues) {
     NavHost(
@@ -33,9 +35,16 @@ fun RootNavGraph(navController: NavHostController, paddingValues: PaddingValues)
             val args: HomeRoute = backStackEntry.toRoute()
             HomeScreen(
                 email = args.email,
-                ipAddress = args.ipAddress
+                ipAddress = args.ipAddress,
+                onGoToMunicipis = {
+                    navController.navigate(MunicipisRoute)
+                }
             )
 
+        }
+
+        composable<MunicipisRoute> {
+            MunicipisScreen()
         }
     }
 }
