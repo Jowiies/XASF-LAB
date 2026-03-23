@@ -14,9 +14,6 @@ import edu.upc.xasf.xasf_lab.screens.MunicipalityResultScreen
 import edu.upc.xasf.xasf_lab.screens.SignInScreen
 import kotlinx.serialization.Serializable
 
-@Serializable object SignInRoute
-
-@Serializable data class HomeRoute(val email: String, val ipAddress: String)
 @Serializable data class MunicipalityResultRoute(val url: String)
 @Serializable object MunicipalityInputRoute
 
@@ -27,20 +24,6 @@ fun RootNavGraph(navController: NavHostController, paddingValues: PaddingValues)
         startDestination = MunicipalityInputRoute,
         modifier = Modifier.padding(paddingValues)
     ) {
-        composable<SignInRoute> {
-            SignInScreen { email, ipAddress ->
-                navController.navigate(HomeRoute(email, ipAddress ))
-            }
-        }
-
-        composable<HomeRoute> { backStackEntry ->
-            val args: HomeRoute = backStackEntry.toRoute()
-            HomeScreen(
-                email = args.email,
-                ipAddress = args.ipAddress
-            )
-        }
-
         composable<MunicipalityInputRoute> {
            MunicipalityInputScreen(onNavigateToResult = { url ->
                navController.navigate(MunicipalityResultRoute(url=url))
